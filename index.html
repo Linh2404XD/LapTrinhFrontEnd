@@ -1,86 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>CV</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-    <style>
-        .header {
-            height: auto;
-            width: auto;
-            display: flex;
-            text-align: center;
-            background: url("https://img.freepik.com/premium-vector/vector-minimal-star-pattern-with-blue-background_921039-3994.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1709596800&semt=ais");
-            background-size: 100%; /* Độ dài theo phần trăm */
-            font-family: Arial;
-        }
-        .contact, .follow, .visit {
-            padding-left: 50px;
-        }
+  <meta charset="UTF-8">
+  <title>CV</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Rampart+One&family=Sacramento&display=swap"
+        rel="stylesheet">
+  <style>
 
-        .avatar img {
-            border: 1px solid black;
-            border-radius: 50%;
-        }
+    /*HEADER*/
+    .header {
 
-        .logo {
-            height: 35px;
-            width: 35px;
-            padding-left: 10px;
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
 
-        }
-        .follow {
-            width: 150px;
-        }
-        .contact{
-            text-align: left;
-        }
+      text-align: center;
+      font-weight: bold;
+      font-family: Arial;
+      border: 5px solid gray;
+    }
 
-        .visit img {
-            height: 70px;
-            width: 70px;
-        }
-        .visit p {
-            width: 170px;
-        }
+    .avatar, .visit, .contact, .follow {
+      padding-left: 60px;
+    }
 
+    .avatar {
+      margin-top: 20px;
+    }
 
-    </style>
+    .avatar .job {
+      margin-top: -10px;
+    }
+
+    .avatar img {
+      border: 1px solid black;
+      border-radius: 50%;
+      font-weight: lighter;
+    }
+
+    .contact {
+      text-align: left;
+    }
+
+    .follow {
+      width: 165px;
+    }
+
+    .follow img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .logo {
+      padding-left: 10px;
+      padding-top: 10px;
+    }
+
+    .visit img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .visit p {
+      width: 177px;
+    }
+
+    /*HEADER*/
+    /*HELLO*/
+    .left {
+
+      width: 50%;
+      margin-left: 30px;
+      margin-top: 10px;
+    }
+
+    .left .hello {
+      font-size: 20px;
+      border: 2px solid #F2F2F2;
+      color: #999999;
+    }
+
+    .left .text-hello {
+      font-size: 50px;
+      font-family: "Rampart One", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      margin-left: -10px;
+      color: #D8AB84;
+    }
+
+    /*HELLO*/
+
+    .left .specialties {
+      border: 2px solid #F2F2F2;
+    }
+    .specialties .title-specialties {
+      border-bottom: 1px solid black;
+      width: 300px;
+
+    }
+    .right .education {
+      display: flex;
+    }
+  </style>
 </head>
 <body>
 <div class="header">
-    <div class="avatar">
-        <img src="avatar.jpg" width="100px" height="100px" alt="">
-        <p>Tran Dinh Tuyet Linh</p>
-        <p>Future programmer</p>
+  <div class="avatar">
+    <img src="avatar.jpg" width="100px" height="100px" alt="">
+    <div>
+      <p>Tran Dinh Tuyet Linh</p>
+      <p class="job">Future programmer</p>
     </div>
-    <div class="contact">
-        <h4>Contact</h4>
-        <p>21130092@st.hcmuaf.edu.vn</p>
-        <p>+84 702901680</p>
-        <p>Thu Duc City</p>
+  </div>
+  <div class="contact">
+    <h2>Contact</h2>
+    <div>
+      <p>21130092@st.hcmuaf.edu.vn</p>
+      <p>+84 702901680</p>
+      <p>Thu Duc City</p>
     </div>
-    <div class="follow">
-        <h4>Follow</h4>
-        <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504923.png" alt="linkedin">
-        <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504903.png" alt="facebook">
-        <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504947.png" alt="twitter">
-        <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504932.png" alt="pinterest">
-        <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504945.png" alt="tumblr">
-        <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="instagram">
+  </div>
+  <div class="follow">
+    <h2>Follow</h2>
+    <div>
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504923.png" alt="linkedin">
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504903.png" alt="facebook">
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504947.png" alt="twitter">
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504932.png" alt="pinterest">
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504945.png" alt="tumblr">
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="instagram">
     </div>
-    <div class="visit">
-        <h4>Visit</h4>
-        <img src="https://cdn-icons-png.flaticon.com/128/2504/2504888.png" alt="behance">
-        <p>FOLLOW MY BEHANCE PORTFOLIO</p>
-    </div>
+  </div>
+  <div class="visit">
+    <h2>Visit</h2>
+    <img src="https://cdn-icons-png.flaticon.com/128/2504/2504888.png" alt="behance">
+    <p>FOLLOW MY BEHANCE PORTFOLIO</p>
+  </div>
 </div>
 <div class="left">
-    <div class="hello"></div>
-    <div class="specialties"></div>
+  <div class="hello">
+    <p class="text-hello">-HELLO, </p>
+    <p>My name is Linh, and I am a student at Nong Lam University. I am passionate about agriculture and forestry, which
+      is why I chose to pursue my studies in this field. I believe that sustainable farming and the responsible
+      management of natural resources are vital for the future of our planet.</p>
+    <p>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    </p>
+  </div>
+  <div class="specialties">
+    <p class="title-specialties">MY SPECIALTIES</p>
+    <!--    <img src="https://cdn-icons-png.flaticon.com/128/6979/6979672.png" alt="">-->
+    <!--    <img src="https://cdn-icons-png.flaticon.com/128/922/922699.png" alt="">-->
+  </div>
 </div>
 <div class="right">
-    <div class="education"></div>
+    <div class="education">
+      <p class="title-education">EDUCATION</p>
+    </div>
     <div class="experiance"></div>
 </div>
 <div class="skills"></div>
