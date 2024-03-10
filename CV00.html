@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CV</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Rampart+One&family=Sacramento&display=swap"
+        rel="stylesheet">
+  <style>
+    img {
+      image-rendering: crisp-edges; /* Hoặc pixelated */
+    }
+    /*HEADER*/
+    .header {
+
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
+      background: url("https://toigingiuvedep.vn/wp-content/uploads/2021/02/anh-nen-anime-4k-phong-canh-va-la-thu-roi.jpg");
+      text-align: center;
+      font-weight: bold;
+      font-family: Arial;
+      border: 5px solid #C9C9C9;
+      color: white;
+      background-position: top ;
+    }
+
+    .avatar, .visit, .contact, .follow {
+      padding-left: 60px;
+    }
+
+    .avatar {
+      margin-top: 20px;
+    }
+
+    .avatar .job {
+      margin-top: -10px;
+    }
+
+    .avatar img {
+      border: 1px solid black;
+      border-radius: 50%;
+      font-weight: lighter;
+    }
+
+    .contact {
+      text-align: left;
+    }
+
+    .follow {
+      width: 165px;
+    }
+
+    .follow img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .logo {
+      padding-left: 10px;
+      padding-top: 10px;
+    }
+
+    .visit img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .visit p {
+      width: 177px;
+    }
+
+    /*HEADER*/
+    /*LEFT*/
+    .left {
+      float: left;
+      width: 50%;
+      margin-left: 30px;
+      margin-top: 10px;
+    }
+
+    /*HELLO*/
+    .left .hello {
+      font-size: 20px;
+      border: 2px solid #C9C9C9;
+      color: #999999;
+    }
+
+    .left .text-hello {
+      font-size: 66px;
+      font-family: "Rampart One", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      margin-left: -10px;
+      color: #DE7C4A;
+      margin-top: -7px;
+    }
+
+    .hello .intro {
+      margin-left: 40px;
+      width: 600px;
+      margin-top: -60px;
+    }
+
+    /*HELLO*/
+
+    .specialties {
+      border: 2px solid #C9C9C9;
+      margin-top: 8px;
+    }
+
+    .title-specialties {
+      border-bottom: 1px solid #C9C9C9;
+      width: 170px;
+      font-weight: bold;
+      font-family: Arial;
+      font-size: 18px;
+      padding-left: 18px;
+      padding-bottom: 10px;
+
+    }
+
+    .img-spec, .line, .a, .b {
+      display: flex;
+
+    }
+
+    .img-spec {
+      margin-top: 30px;
+    }
+
+    .img-spec i {
+      border: 1px solid #DE7C4A;
+      padding: 30px 25px;
+      border-radius: 100%;
+      font-size: 60px;
+      margin: auto;
+      color: #DE7C4A;
+
+    }
+
+    .img-spec .fa-file, .img-spec .fa-database {
+      padding: 30px 40px;
+      border-radius: 100%;
+
+
+    }
+
+    .vertical-line {
+      height: 30px; /* Chiều cao của đường gạch */
+      border-left: 4px solid #DE7C4A; /* Màu và độ dày của đường gạch */
+      margin: auto;
+      margin-top: 15px;
+      margin-bottom: 20px;
+
+    }
+
+    .text {
+      text-align: center;
+      margin: auto;
+    }
+
+    .a .text {
+      font-weight: bold;
+      font-family: Arial;
+    }
+
+    .b .text {
+      font-family: Arial;
+      padding-right: 8px;
+      margin-bottom: 43px;
+
+    }
+
+    /*LEFT*/
+
+    /*RIGHT*/
+    .right {
+      width: 45%;
+      float: right;
+      margin-top: 10px;
+      border: 2px solid #C9C9C9;
+      margin-right: 30px;
+
+    }
+
+    .title-education, .title-experiance, .title-creative, .title-software {
+      border-bottom: 1px solid #C9C9C9;
+      width: 170px;
+      font-weight: bold;
+      font-family: Arial;
+      font-size: 18px;
+      padding-left: 18px;
+      padding-bottom: 10px;
+    }
+
+
+    .bullet {
+      height: 35px; /* Chiều cao của đường gạch */
+      border-left: 2px solid #C9C9C9; /* Màu và độ dày của đường gạch */
+      margin-left: 30px;
+      margin-top: 5px;
+    }
+
+    .school, .schoolNL {
+      margin-top: 5px;
+      margin-left: 10px;
+      font-family: Arial;
+
+    }
+
+    .schoolNL {
+      margin-left: 40px;
+      margin-bottom: 17px;
+    }
+
+    .fa-circle {
+      font-size: 7px;
+      color: #DE7C4A;
+      margin-left: 26px;
+    }
+
+    .year {
+      font-weight: bold;
+      font-family: Arial;
+      margin-left: 10px;
+
+    }
+
+    /*RIGHT*/
+
+    /*SKILL*/
+    .skills {
+      display: flex;
+      margin-left: 30px;
+      width: 100%;
+      margin-top: 50px;
+    }
+
+    .creative {
+      float: left;
+      width: 50%;
+      border: 2px solid #C9C9C9;
+      border-right: unset;
+      margin-top: 8px;
+
+    }
+
+
+    .horizontal-text {
+      transform: rotate(-90deg);
+      transform-origin: left top;
+      position: absolute;
+      margin-top: 110px;
+      margin-left: 10px;
+      font-size: 10px;
+      font-family: Arial;
+      color: #DE7C4A;
+
+    }
+
+    .bulleta {
+      height: 15px;
+      border-left: 2px solid #C9C9C9;
+      margin-left: 10px;
+      margin-bottom: 25px;
+      border-top: 2px solid #C9C9C9;
+      width: 20px;
+
+    }
+
+    .bulletb {
+      height: 15px;
+      border-left: 2px solid #C9C9C9;
+      margin-left: 10px;
+      margin-top: -39px;
+      margin-bottom: 25px;
+      border-bottom: 2px solid #C9C9C9;
+      width: 20px;
+
+
+    }
+
+    ul {
+      margin-top: -70px;
+    }
+
+    li {
+      padding-top: 20px;
+      list-style-type: none;
+      font-family: Arial;
+    }
+
+    .left-c {
+      margin-left: 40px;
+    }
+
+    .right-c {
+      float: right;
+      margin-right: 60px;
+      margin-left: 200px;
+    }
+
+    .all {
+      display: flex;
+
+    }
+
+
+    .software {
+      float: right;
+      width: 46%;
+      border: 2px solid #C9C9C9;
+      border-left: unset;
+      margin-top: 8px;
+    }
+
+    .title-software {
+      width: 250px;
+
+    }
+
+    .soft img {
+      height: 30px;
+      width: 30px;
+      padding: 5px 5px;
+      border: 1px solid black;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    .name {
+      font-family: Arial;
+      font-weight: bold;
+      margin-left: 30px;
+      margin-top: 20px;
+      width: 20px;
+    }
+
+    .flex {
+      display: flex;
+
+    }
+
+    .dots {
+      margin-left: 60px;
+      justify-content: center;
+      display: flex;
+    }
+
+    .dots .fa-circle {
+      font-size: 14px;
+      margin-top: 25px;
+      color: #DE7C4A;
+    }
+
+    .dots-emty .fa-circle {
+      font-size: 12px;
+      margin-top: 25px;
+      color: #C9C9C9;
+    }
+
+    .hobbies {
+      border: 2px solid #C9C9C9;
+      margin-left: 30px;
+      margin-right: 30px;
+      margin-top: 8px;;
+
+
+    }
+
+    .title-hobbies {
+      width: 200px;
+      font-weight: bold;
+      font-family: Arial;
+      font-size: 18px;
+      padding-left: 18px;
+      padding-bottom: 10px;
+    }
+
+    .icon-hobbies {
+      display: flex;
+      justify-content: center;
+      margin-top: -35px;
+      margin-bottom: 20px;
+    }
+
+    .div-icon i {
+      font-size: 40px;
+
+    }
+
+    .div-icon {
+      border: 1px solid #DE7C4A;
+      text-align: center;
+      border-radius: 50%;
+      margin-left: 20px;
+
+    }
+
+    .fa-utensils, .fa-film, .fa-basketball {
+      padding: 30px 28px;
+      margin-top: -10px;
+
+    }
+
+    .fa-gamepad {
+      padding: 30px 20px;
+      margin-top: -10px;
+
+    }
+    .fa-headphones{
+      padding: 30px 25px;
+      margin-top: -10px;
+    }
+
+    .div-icon p {
+      font-size: 8px;
+      margin-top: -20px;
+      font-family: Arial;
+    }
+
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="avatar">
+    <img src="avatar.jpg" width="100px" height="100px" alt="">
+    <div>
+      <p>Tran Dinh Tuyet Linh</p>
+      <p class="job">Future programmer</p>
+    </div>
+  </div>
+  <div class="contact">
+    <h2>Contact</h2>
+    <div>
+      <p>21130092@st.hcmuaf.edu.vn</p>
+      <p>+84 702901680</p>
+      <p>Thu Duc City</p>
+    </div>
+  </div>
+  <div class="follow">
+    <h2>Follow</h2>
+    <div>
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504923.png" alt="linkedin">
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504903.png" alt="facebook">
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504947.png" alt="twitter">
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504932.png" alt="pinterest">
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2504/2504945.png" alt="tumblr">
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="instagram">
+    </div>
+  </div>
+  <div class="visit">
+    <h2>Visit</h2>
+    <img src="https://cdn-icons-png.flaticon.com/128/2504/2504888.png" alt="behance">
+    <p>FOLLOW MY BEHANCE PORTFOLIO</p>
+  </div>
+</div>
+<div class="left">
+  <div class="hello">
+    <p class="text-hello">-HELLO, </p>
+    <div class="intro">
+      <p>I am a dedicated IT student with a passion for technology and a strong desire to pursue
+        a career in the IT industry. I am currently studying [mention your specific IT program or field of study] at
+        [mention your educational institution].</p>
+      <p>
+        Throughout my academic journey, I have gained a solid foundation in various IT concepts and skills. I have
+        acquired knowledge in programming languages such as [mention relevant programming languages], as well as web
+        development technologies like HTML, CSS, and JavaScript. I have also gained experience in database management
+        using SQL.</p>
+      <p>
+    </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    </p>
+  </div>
+  <div class="specialties">
+    <p class="title-specialties">MY SPECIALTIES</p>
+    <div class="img-spec">
+      <i class="fa-solid fa-file"></i>
+      <i class="fa-solid fa-code"></i>
+      <i class="fa-solid fa-database"></i>
+    </div>
+    <div class="line">
+      <div class="vertical-line"></div>
+      <div class="vertical-line"></div>
+      <div class="vertical-line"></div>
+    </div>
+    <div class="a">
+      <div class="text">WRITE</div>
+      <div class="text">DIGITAL</div>
+      <div class="text">DESIGN</div>
+    </div>
+    <div class="b">
+      <div class="text">Document</div>
+      <div class="text">Web Design</div>
+      <div class="text">Database</div>
+    </div>
+  </div>
+</div>
+<div class="right">
+  <div class="education">
+    <p class="title-education">EDUCATION</p>
+    <i class="fa-solid fa-circle"></i> <span class="year">2009 - 2014</span>
+    <div class="bullet">
+      <p class="school">Kim Dong Primary School</p>
+    </div>
+
+    <i class="fa-solid fa-circle"></i> <span class="year">2014 - 2018 </span>
+    <div class="bullet">
+      <p class="school">Hung Vuong Secondary School</p>
+    </div>
+
+    <i class="fa-solid fa-circle"></i> <span class="year">2018 - 2021 </span>
+    <div class="bullet">
+      <p class="school">Sa Dec City High School</p>
+    </div>
+    <i class="fa-solid fa-circle"></i> <span class="year">2021 - 2025 </span>
+    <p class="schoolNL">Nong Lam University</p>
+  </div>
+  <div class="experiance">
+    <p class="title-experiance">EXPERIANCE</p>
+    <i class="fa-solid fa-circle"></i> <span class="year">Website Light Bulb Store</span>
+    <div class="bullet">
+      <p class="school">Web programming</p>
+    </div>
+
+    <i class="fa-solid fa-circle"></i> <span class="year">Project Database Management System </span>
+    <div class="bullet">
+      <p class="school">Add Database</p>
+    </div>
+
+    <i class="fa-solid fa-circle"></i> <span class="year">Project Game Pikachu </span>
+    <div class="bullet">
+      <p class="school">Design Model</p>
+    </div>
+    <i class="fa-solid fa-circle"></i> <span class="year">Project Graph Theory </span>
+    <p class="schoolNL">Fullstack</p>
+  </div>
+</div>
+
+<div class="skills">
+  <div class="creative">
+    <p class="title-creative">SOFTWARE</p>
+    <div class="all">
+      <div class="left-c">
+        <div class="bulleta"></div>
+        <p class="horizontal-text">SOFTWARE I USED</p>
+        <ul>
+          <li>Eclipse</li>
+          <li>IntelliJ</li>
+          <li>Visual Studio Code</li>
+          <li>Android Studio</li>
+          <li>MySQL</li>
+          <li>Navicat</li>
+        </ul>
+        <div class="bulletb"></div>
+      </div>
+      <div class="right-c">
+        <div class="bulleta"></div>
+        <p class="horizontal-text">WHAT I CAN DO FOR YOU</p>
+        <ul>
+          <li>Java</li>
+          <li>JavaScript</li>
+          <li>CSS</li>
+          <li>HTML</li>
+          <li>C++</li>
+          <li>Python</li>
+        </ul>
+        <div class="bulletb"></div>
+
+
+      </div>
+    </div>
+
+  </div>
+  <div class="software">
+    <p class="title-software">SKILLS</p>
+    <div class="soft">
+      <div class="flex">
+        <img src="https://cdn-icons-png.flaticon.com/128/226/226777.png" alt="">
+
+        <span class="name">Java</span>
+
+        <div class="dots">
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+        </div>
+        <div class="dots-emty">
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+        </div>
+      </div>
+      <div class="flex">
+        <img src="https://cdn-icons-png.flaticon.com/128/5968/5968267.png" alt="">
+        <span class="name">HTML</span>
+        <div class="dots">
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+        </div>
+        <div class="dots-emty">
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+        </div>
+      </div>
+      <div class="flex">
+        <img src="https://cdn-icons-png.flaticon.com/128/732/732190.png" alt="">
+        <span class="name">CSS</span>
+        <div class="dots">
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+        </div>
+        <div class="dots-emty">
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+        </div>
+      </div>
+      <div class="flex">
+        <img src="https://cdn-icons-png.flaticon.com/128/5968/5968292.png" alt="">
+        <span class="name">Javascript</span>
+        <div class="dots">
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+
+        </div>
+        <div class="dots-emty">
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hobbies">
+  <p class="title-hobbies">HOBBIES & INTEREST</p>
+  <div class="icon-hobbies">
+    <div class="div-icon">
+      <i class="fa-solid fa-headphones"></i><br>
+      <p>MUSIC</p>
+    </div>
+    <div class="div-icon">
+      <i class="fa-solid fa-basketball"><br></i>
+      <p>BASKETBALL</p>
+    </div>
+    <div class="div-icon">
+      <i class="fa-solid fa-gamepad"><br></i>
+      <p>GAME</p>
+    </div>
+    <div class="div-icon">
+      <i class="fa-solid fa-utensils"><br></i>
+      <p>COOK</p>
+    </div>
+    <div class="div-icon">
+      <i class="fa-solid fa-film"><br></i>
+      <p>FILM</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
