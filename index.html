@@ -5,11 +5,50 @@
     <title>Brick Breaker</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frijole&family=Rampart+One&family=Rubik+Doodle+Shadow&family=Titan+One&display=swap"
+          rel="stylesheet">
 </head>
 <body>
-    <canvas id="board">
-    </canvas>
+<div class="content">
+    <div class="score-board">
+        <div class="title"> PING PONG
+            <img src="https://cdn-icons-png.flaticon.com/128/7470/7470708.png" width="120px" height="120px" alt="">
+        </div>
+        <div class="list_icon">
+            <div class="icon"><img src="https://cdn-icons-png.flaticon.com/128/334/334345.png" alt="">
+                <p id="score">0</p></div>
+            <div class="icon"><img src="https://cdn-icons-png.flaticon.com/128/9484/9484251.png" alt="">
+                <p id="heart">3</p></div>
+            <div class="icon"><img src="https://cdn-icons-png.flaticon.com/128/2163/2163271.png" alt=""> <br>
+                <select>
+                    <option value="option1" selected>Level 1</option>
+                    <option value="option2">Level 2</option>
+                    <option value="option3">Level 3</option>
+                    <option value="option1">Level 4</option>
+                    <option value="option2">Level 5</option>
+                    <option value="option3">Level 6</option>
+                </select>
 
+            </div>
+
+        </div>
+        <div>
+            <button class="again" onclick="resetGame()">PLAY AGAIN</button>
+        </div>
+
+    </div>
+    <canvas id="board"></canvas>
+    <button id="start" onclick="resetGame()">START</button>
+</div>
 
 </body>
+<script>
+    const start = document.getElementById('start');
+    start.addEventListener('click', function () {
+        start.style.display = 'none';
+    })
+
+</script>
 </html>

@@ -1,3 +1,5 @@
+let score = 0;
+let heart = 3;
 // board
 let board;
 let boardWidth = 500;
@@ -17,10 +19,10 @@ let player = {
 }
 
 // ball
-let ballWidth = 10;
-let ballHeight = 10;
-let ballVelocityX = 3;
-let ballVelocityY = 2;
+let ballWidth = 14;
+let ballHeight = 14;
+let ballVelocityX = 2;
+let ballVelocityY = 1.5;
 
 let ball = {
     x: boardWidth / 2,
@@ -31,6 +33,18 @@ let ball = {
     velocityY: ballVelocityY
 }
 
+// blocks
+let blockArray = [];
+let blockWidth = 50;
+let blockHeight = 20;
+let blockColumns = 8;
+let blockRows = 3;
+let blockCount = 0;
+
+// tọa độ của block tu goc tren ben trai
+let blockX = 15;
+let blockY = 45;
+
 
 window.onload = function () {
     board = document.getElementById("board");
@@ -38,13 +52,6 @@ window.onload = function () {
     board.width = boardWidth;
     context = board.getContext("2d") // ve o mo hinh 2d
 
-    //ve thanh dieu khien
-    context.fillStyle = "skyblue";
-    context.fillRect(player.x, player.y, player.width, player.height);
-
-
-    requestAnimationFrame(update);
-    document.addEventListener("mousemove", movePlayer);
 }
 
 // cap nhat trang thai game
@@ -63,7 +70,27 @@ function update() {
     ball.y += ball.velocityY;
     context.fillRect(ball.x, ball.y, ball.width, ball.height);
 
+
     ballMove();
+
+    // ve block
+    context.fillStyle = "red";
+
+    for (let i = 0; i < blockArray.length; i++) {
+        let block = blockArray[i];
+        if (!block.break) {
+            if (ball.x + ball.width > block.x
+                && ball.x - ball.width < block.x + block.width
+                && ball.y + ball.width > block.y
+                && ball.y - ball.width < block.y + block.height) {
+                block.break = true;
+                score += 10;
+                updateScore();
+                ball.velocityX = -ball.velocityX;
+            }
+            context.fillRect(block.x, block.y, block.width, block.height);
+        }
+    }
 
 }
 
@@ -82,14 +109,27 @@ function movePlayer(event) {
 }
 
 function ballMove() {
+
     // kiem tra xem ball co ra ngoai board hay khong
     if (ball.x + ballWidth > boardWidth || ball.x - ball.width < 0) {
         ball.velocityX = -ball.velocityX;
     } else if (ball.y - ball.width < 0) {
         ball.velocityY = -ball.velocityY;
     } else if (ball.y + ball.width > boardHeight) {
+        newBall();
+        heart--;
+        updateHeart();
+        if (heart < 0) {
+            alert("GAME OVER!");
+            heart = 3;
+            score = 0;
+            updateHeart();
+            updateScore();
+        }
+
 
     }
+
     // bong cham vao thanh dieu khien dao huong
     // ball.x + ball.width > player.x: bong cham vao thanh dieu khien tu ben trai
     // ball.x - ball.width < player.x + player.width: bong cham vao thanh dieu khien tu ben phai
@@ -101,7 +141,53 @@ function ballMove() {
     ) {
 
         ball.velocityY = -ball.velocityY; // bong di len
-        ball.velocityX = -ball.velocityX; // bong di ngang
+        ball.velocityX = -ball.velocityX; // bong cham vao ben phai doi len
     }
 
+}
+
+function newBall() {
+    ball.x = boardWidth / 2;
+    ball.y = boardHeight / 2;
+    ball.velocityX = 2;
+    ball.velocityY = 1.5;
+}
+
+function createBlocks() {
+    for (let i = 0; i < blockRows; i++) {
+        for (let j = 0; j < blockColumns; j++) {
+            blockArray[blockCount] = {
+                x: blockX + j * (blockWidth + 10),
+                y: blockY + i * (blockHeight + 10),
+                width: blockWidth,
+                height: blockHeight,
+                break: false
+            }
+            blockCount++;
+        }
+    }
+}
+
+function resetGame() {
+    ball.x = boardWidth / 2;
+    ball.y = boardHeight / 2;
+    ball.velocityX = 2;
+    ball.velocityY = 1.5;
+    blockArray = [];
+    blockCount = 0;
+    requestAnimationFrame(update);
+    document.addEventListener("mousemove", movePlayer);
+    createBlocks();
+}
+
+// cap nhat diem so
+function updateScore() {
+    const scoreElement = document.getElementById('score');
+    scoreElement.textContent = score;
+}
+
+// cap nhat so mang
+function updateHeart() {
+    const heartElement = document.getElementById('heart');
+    heartElement.textContent = heart;
 }
