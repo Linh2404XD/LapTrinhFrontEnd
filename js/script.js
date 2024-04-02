@@ -141,7 +141,7 @@ function ballMove() {
     ) {
 
         ball.velocityY = -ball.velocityY; // bong di len
-        ball.velocityX = -ball.velocityX; // bong cham vao ben phai doi len
+
     }
 
 }
