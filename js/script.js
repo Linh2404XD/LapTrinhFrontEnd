@@ -125,6 +125,7 @@ function ballMove() {
             score = 0;
             updateHeart();
             updateScore();
+            createBlocks();
         }
 
 
