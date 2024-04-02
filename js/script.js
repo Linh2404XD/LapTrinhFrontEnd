@@ -1,15 +1,15 @@
 let score = 0;
 let heart = 3;
+
 // board
 let board;
-let boardWidth = 500;
+let boardWidth = 700;
 let boardHeight = 700;
 let context;
 
 // player
 let playerWidth = 100;
 let playerHeight = 10;
-
 let player = {
     // vi tri x, y cua thanh dieu khien
     x: boardWidth / 2 - playerWidth / 2,
@@ -23,7 +23,6 @@ let ballWidth = 14;
 let ballHeight = 14;
 let ballVelocityX = 2;
 let ballVelocityY = 1.5;
-
 let ball = {
     x: boardWidth / 2,
     y: boardHeight / 2,
@@ -33,6 +32,7 @@ let ball = {
     velocityY: ballVelocityY
 }
 
+// level 1
 // blocks
 let blockArray = [];
 let blockWidth = 50;
@@ -42,7 +42,7 @@ let blockRows = 3;
 let blockCount = 0;
 
 // tọa độ của block tu goc tren ben trai
-let blockX = 15;
+let blockX = boardWidth / 2 - (blockWidth + 10) * blockColumns / 2
 let blockY = 45;
 
 
@@ -180,6 +180,8 @@ function resetGame() {
     createBlocks();
 }
 
+
+// bat dau game
 // cap nhat diem so
 function updateScore() {
     const scoreElement = document.getElementById('score');

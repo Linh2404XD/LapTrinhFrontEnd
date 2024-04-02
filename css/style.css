@@ -1,11 +1,75 @@
 body {
   text-align: center;
-  background: url("https://img.itch.zone/aW1nLzExMzk2MTExLmdpZg==/original/HPah7q.gif");
+  background: url("https://wallpaperxyz.com/wp-content/uploads/Gif-Animated-Wallpaper-Background-Full-HD-Free-Download-for-PC-Macbook-261121-Wallpaperxyz.com-46.gif");
   background-size: cover;
-  background-position: bottom;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+#loading img {
+  margin-top: 15%;
+}
+
+.start-board {
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.start-board .title {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 60px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px 10px rgba(70, 49, 49, 0.9);
+}
+.start-board .title img {
+  height: 120px;
+  width: 120px;
+  margin-left: -10px;
+}
+.start-board .title .p1 {
+  margin-left: 15px;
+}
+.start-board .title .i, .start-board .title .n, .start-board .title .o {
+  margin-left: -50px;
+}
+.start-board .title .g {
+  margin-left: -30px;
+}
+.start-board #button-start {
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  background: none;
+  margin-bottom: -200px;
+}
+.start-board #button-start img {
+  width: 300px;
+  height: 100px;
+  margin-top: 10px;
+}
+
+#start {
+  font-size: 30px;
+  margin-top: 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .content {
+  justify-content: center;
+  display: none;
+}
+
+.content1 {
   display: flex;
   justify-content: center;
 }
@@ -58,19 +122,6 @@ body {
 .score-board .again {
   margin-top: 20px;
   padding: 10px;
-  background-color: deepskyblue;
-  color: white;
-  font-size: 20px;
-  border: none;
-  cursor: pointer;
-}
-
-#start {
-  position: absolute;
-  top: 50%;
-  left: 63%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
   background-color: deepskyblue;
   color: white;
   font-size: 20px;
