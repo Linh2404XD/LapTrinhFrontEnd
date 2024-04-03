@@ -7,21 +7,29 @@ let boardWidth = 700;
 let boardHeight = 700;
 let context;
 
-// player
-let playerWidth = 100;
-let playerHeight = 10;
+// paddle
+const imagePaddle = new Image();
+imagePaddle.src = 'paddle.png';
+let playerWidth = 140;
+let playerHeight = 30;
 let player = {
     // vi tri x, y cua thanh dieu khien
     x: boardWidth / 2 - playerWidth / 2,
-    y: boardHeight - 20,
+    y: boardHeight - 35,
     width: playerWidth,
     height: playerHeight,
 }
 
+function drawPaddle() {
+
+}
+
 // ball
-let ballWidth = 14;
-let ballHeight = 14;
-let ballVelocityX = 2;
+const imageBall = new Image();
+imageBall.src = 'ball.png';
+let ballWidth = 25;
+let ballHeight = 25;
+let ballVelocityX = 2.4;
 let ballVelocityY = 1.5;
 let ball = {
     x: boardWidth / 2,
@@ -32,19 +40,36 @@ let ball = {
     velocityY: ballVelocityY
 }
 
+function drawBall() {
+    ball.x = ball.velocityX + ball.x;
+    ball.y = ball.velocityY + ball.y;
+    context.drawImage(imageBall, ball.x, ball.y, ball.width, ball.height);
+
+}
+
 // level 1
 // blocks
+const imageBrick = new Image();
+imageBrick.src = 'brick.png';
+
 let blockArray = [];
-let blockWidth = 50;
-let blockHeight = 20;
+let blockWidth = 60;
+let blockHeight = 30;
 let blockColumns = 8;
 let blockRows = 3;
 let blockCount = 0;
 
+
 // tọa độ của block tu goc tren ben trai
-let blockX = boardWidth / 2 - (blockWidth + 10) * blockColumns / 2
+let blockX = 45;
 let blockY = 45;
 
+function newGame() {
+    resetGame();
+    updateHeart();
+    updateScore();
+
+}
 
 window.onload = function () {
     board = document.getElementById("board");
@@ -56,42 +81,46 @@ window.onload = function () {
 
 // cap nhat trang thai game
 function update() {
+
     requestAnimationFrame(update);
     // xoa thanh dieu khien cu
     context.clearRect(0, 0, boardWidth, boardHeight);
 
     // ve thanh dieu khien moi
-    context.fillStyle = "skyblue";
-    context.fillRect(player.x, player.y, playerWidth, playerHeight);
+    context.drawImage(imagePaddle, player.x, player.y, player.width, player.height);
 
-    // ve qua bong
-    context.fillStyle = "white";
-    ball.x += ball.velocityX;
-    ball.y += ball.velocityY;
-    context.fillRect(ball.x, ball.y, ball.width, ball.height);
-
-
+    // ve ball
+    drawBall();
     ballMove();
 
     // ve block
-    context.fillStyle = "red";
+    blockEvent();
 
+}
+
+function blockEvent() {
     for (let i = 0; i < blockArray.length; i++) {
         let block = blockArray[i];
         if (!block.break) {
-            if (ball.x + ball.width > block.x
-                && ball.x - ball.width < block.x + block.width
-                && ball.y + ball.width > block.y
-                && ball.y - ball.width < block.y + block.height) {
+            if (ball.x + ball.width > block.x // bong cham vao block tu ben trai
+                && ball.x - ball.width < block.x + block.width // bong cham vao block tu ben phai
+                && ball.y + ball.width > block.y // bong cham vao block tu phia duoi
+                && ball.y < block.y + block.height) {  // bong cham vao block tu phia tren
+                ball.velocityX *= -1;
+                ball.velocityY *= -1;
                 block.break = true;
                 score += 10;
                 updateScore();
-                ball.velocityX = -ball.velocityX;
+
             }
-            context.fillRect(block.x, block.y, block.width, block.height);
+            context.drawImage(imageBrick, block.x, block.y, block.width, block.height);
+        }
+        if (score == blockArray.length * 10) {
+            alert("YOU WIN!");
+            score = 0;
+            updateScore();
         }
     }
-
 }
 
 // Di chuot de di chuyen thanh dieu khien
@@ -126,6 +155,7 @@ function ballMove() {
             updateHeart();
             updateScore();
             createBlocks();
+
         }
 
 
@@ -140,9 +170,7 @@ function ballMove() {
         ball.x - ball.width < player.x + player.width &&
         ball.y + ball.width > player.y
     ) {
-
         ball.velocityY = -ball.velocityY; // bong di len
-
     }
 
 }
@@ -158,8 +186,8 @@ function createBlocks() {
     for (let i = 0; i < blockRows; i++) {
         for (let j = 0; j < blockColumns; j++) {
             blockArray[blockCount] = {
-                x: blockX + j * (blockWidth + 10),
-                y: blockY + i * (blockHeight + 10),
+                x: blockX + j * (blockWidth + 20),
+                y: blockY + i * (blockHeight + 20),
                 width: blockWidth,
                 height: blockHeight,
                 break: false
@@ -172,17 +200,18 @@ function createBlocks() {
 function resetGame() {
     ball.x = boardWidth / 2;
     ball.y = boardHeight / 2;
-    ball.velocityX = 2;
-    ball.velocityY = 1.5;
     blockArray = [];
     blockCount = 0;
     requestAnimationFrame(update);
+
     document.addEventListener("mousemove", movePlayer);
     createBlocks();
+    score = 0;
+    updateScore();
+
 }
 
 
-// bat dau game
 // cap nhat diem so
 function updateScore() {
     const scoreElement = document.getElementById('score');

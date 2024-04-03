@@ -53,7 +53,18 @@ body {
 .start-board #button-start img {
   width: 300px;
   height: 100px;
-  margin-top: 10px;
+  margin-top: 30px;
+}
+
+#button-guide {
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+#button-guide img {
+  margin-top: 20px;
+  height: 70px;
 }
 
 #start {

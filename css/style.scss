@@ -9,7 +9,7 @@ body {
 }
 
 
-#loading img{
+#loading img {
   margin-top: 15%;
 
 
@@ -61,15 +61,29 @@ body {
     border: none;
     background: none;
     margin-bottom: -200px;
+
     img {
 
-        width: 300px;
-        height: 100px;
-        margin-top: 10px;
+      width: 300px;
+      height: 100px;
+      margin-top: 30px;
 
     }
   }
 }
+
+#button-guide {
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  background: none;
+
+  img {
+    margin-top: 20px;
+    height: 70px;
+  }
+}
+
 
 #start {
   font-size: 30px;

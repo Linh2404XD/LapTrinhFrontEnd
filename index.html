@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="loading" style="display: none;">
-    <img src="https://media.tenor.com/v6eujWktbsUAAAAi/luffy.gif" alt="" height="200px">
+    <img src="https://66.media.tumblr.com/dcac66d94aa91c9706a3166c7944dcd5/tumblr_mm31jswkAI1rfjowdo1_640.gif" alt="" height="200px">
 </div>
 <div class="start-board">
     <div class="title">
@@ -31,11 +31,11 @@
         <img class="g" src="https://cdn-icons-png.flaticon.com/128/3498/3498068.png" alt="">
     </div>
     <button id="button-start">
-        <img src="pixil-frame.png"  alt="">
+        <img src="start-button.png" alt="">
     </button>
-
-    <div class="">HƯỚNG DẪN</div>
-
+    <button id="button-guide">
+        <img src="guide-button.png" alt="">
+    </button>
 
 </div>
 <div class="content">
@@ -63,7 +63,7 @@
 
             </div>
             <div>
-                <button class="again" onclick="resetGame()">PLAY AGAIN</button>
+                <button class="again" onclick="newGame()">PLAY AGAIN</button>
             </div>
 
         </div>
@@ -77,17 +77,17 @@
     const content = document.querySelector('.content');
     const loadingSpinner = document.getElementById('loading');
 
-    start.addEventListener('click', function() {
+    start.addEventListener('click', function () {
         start.style.display = 'none';
         startBoard.style.display = 'none';
         loadingSpinner.style.display = 'block';
-        setTimeout(function() {
+        setTimeout(function () {
             loadingSpinner.style.display = 'none';
             start.style.display = 'none';
             startBoard.style.display = 'none';
             content.style.display = 'block';
             resetGame();
-        }, 2500);
+        }, 2000);
     });
 </script>
 </body>
