@@ -1,5 +1,6 @@
 let score = 0;
 let heart = 3;
+let gameOver = false;
 
 // board
 let board;
@@ -21,16 +22,16 @@ let player = {
 }
 
 function drawPaddle() {
-
+    context.drawImage(imagePaddle, player.x, player.y, player.width, player.height);
 }
 
 // ball
 const imageBall = new Image();
 imageBall.src = 'ball.png';
-let ballWidth = 25;
-let ballHeight = 25;
+let ballWidth = 40;
+let ballHeight = 40;
 let ballVelocityX = 2.4;
-let ballVelocityY = 1.5;
+let ballVelocityY = 2;
 let ball = {
     x: boardWidth / 2,
     y: boardHeight / 2,
@@ -41,8 +42,6 @@ let ball = {
 }
 
 function drawBall() {
-    ball.x = ball.velocityX + ball.x;
-    ball.y = ball.velocityY + ball.y;
     context.drawImage(imageBall, ball.x, ball.y, ball.width, ball.height);
 
 }
@@ -55,80 +54,144 @@ imageBrick.src = 'brick.png';
 let blockArray = [];
 let blockWidth = 60;
 let blockHeight = 30;
-let blockColumns = 8;
+let blockColumns = 4;
 let blockRows = 3;
 let blockCount = 0;
 
 
 // tọa độ của block tu goc tren ben trai
-let blockX = 45;
-let blockY = 45;
+let blockX = boardWidth / 2 - (blockWidth + 10) * blockColumns / 2;
+let blockY = boardHeight / 2 - (blockHeight + 10) * blockRows / 2 - 200;
 
-function newGame() {
-    resetGame();
-    updateHeart();
-    updateScore();
 
+function createBlocks() {
+    // tao block
+    blockArray = [];
+    for (let i = 0; i < blockRows; i++) {
+        for (let j = 0; j < blockColumns; j++) {
+            let block = {
+                x: blockX + j * (blockWidth + 20),
+                y: blockY + i * (blockHeight + 20),
+                width: blockWidth,
+                height: blockHeight,
+                break: false
+            }
+            blockArray.push(block);
+
+        }
+    }
+    blockCount = blockArray.length;
 }
 
-window.onload = function () {
+function drawBlocks() {
+    for (let i = 0; i < blockArray.length; i++) {
+        let block = blockArray[i];
+        if (!block.break) {
+            if (ball.x + ball.width >= block.x // bong cham vao block tu ben trai
+                && ball.x <= block.x + block.width // bong cham vao block tu ben phai
+                && ball.y + ball.height >= block.y // bong cham vao block tu phia tren
+                && ball.y <= block.y + block.height) { // bong cham vao block tu phia duoi. neu toa do cua
+                ball.velocityY *= -1;
+                block.break = true;
+                score += 10;
+                updateScore();
+                if (score == blockArray.length * 10) {
+                    context.font = "20px sans-serif";
+                    context.fillText("YOU WIN: Press 'Space' to play again", boardWidth / 2 - 150, boardHeight / 2 + 100);
+                    gameOver = true;
+                    return;
+                }
+            }
+            context.drawImage(imageBrick, block.x, block.y, block.width, block.height);
+        }
+    }
+}
+
+function startGame() {
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
     context = board.getContext("2d") // ve o mo hinh 2d
 
+    startPlay();
+}
+
+function startPlay() {
+    blockArray = [];
+    blockCount = 0;
+    ball.velocityX = ballVelocityX;
+    ball.velocityY = ballVelocityY;
+    requestAnimationFrame(update);
+    document.addEventListener("mousemove", movePaddle);
+    document.addEventListener("keydown", getKey);
+    createBlocks();
+    score = 0;
+
+}
+
+function resetGame() {
+    gameOver = false;
+    player = {
+        x: boardWidth / 2 - playerWidth / 2,
+        y: boardHeight - 35,
+        width: playerWidth,
+        height: playerHeight,
+    }
+    ball = {
+        x: boardWidth / 2,
+        y: boardHeight / 2,
+        width: ballWidth,
+        height: ballHeight,
+        velocityX: ballVelocityX,
+        velocityY: ballVelocityY
+    }
+    blockArray = [];
+    score = 0;
+    heart = 3;
+    updateHeart();
+    createBlocks();
 }
 
 // cap nhat trang thai game
 function update() {
-
     requestAnimationFrame(update);
+    if (gameOver) {
+        return;
+    }
+
     // xoa thanh dieu khien cu
     context.clearRect(0, 0, boardWidth, boardHeight);
+    drawPaddle();
 
-    // ve thanh dieu khien moi
-    context.drawImage(imagePaddle, player.x, player.y, player.width, player.height);
 
-    // ve ball
+    ball.x += ball.velocityX;
+    ball.y += ball.velocityY;
+
     drawBall();
     ballMove();
 
-    // ve block
-    blockEvent();
+
+    drawBlocks();
 
 }
+function getKey(event) {
+    if (event.code == 'Space' && gameOver == true) {
+        resetGame();
+    }
 
-function blockEvent() {
-    for (let i = 0; i < blockArray.length; i++) {
-        let block = blockArray[i];
-        if (!block.break) {
-            if (ball.x + ball.width > block.x // bong cham vao block tu ben trai
-                && ball.x - ball.width < block.x + block.width // bong cham vao block tu ben phai
-                && ball.y + ball.width > block.y // bong cham vao block tu phia duoi
-                && ball.y < block.y + block.height) {  // bong cham vao block tu phia tren
-                ball.velocityX *= -1;
-                ball.velocityY *= -1;
-                block.break = true;
-                score += 10;
-                updateScore();
+}
+// Các chức năng cần thực hiện
+function movePaddle(event) {
+    if (gameOver) {
+        if (event.code == "Space") {
+            resetGame();
+            startGame();
 
-            }
-            context.drawImage(imageBrick, block.x, block.y, block.width, block.height);
-        }
-        if (score == blockArray.length * 10) {
-            alert("YOU WIN!");
-            score = 0;
-            updateScore();
         }
     }
-}
-
-// Di chuot de di chuyen thanh dieu khien
-function movePlayer(event) {
-    let mouseX = event.clientX - board.offsetLeft; //  board.offsetLeft: khoang cach den le trai cua board
+    let mouseX = event.clientX - board.offsetLeft;
     player.x = mouseX - player.width / 2;
 
-    // kiem tra xem thanh dieu khien co ra ngoai board hay khong
     if (player.x < 0) {
         player.x = 0;
     } else if (player.x > boardWidth - player.width) {
@@ -137,80 +200,42 @@ function movePlayer(event) {
 
 }
 
+
+
 function ballMove() {
 
     // kiem tra xem ball co ra ngoai board hay khong
-    if (ball.x + ballWidth > boardWidth || ball.x - ball.width < 0) {
-        ball.velocityX = -ball.velocityX;
-    } else if (ball.y - ball.width < 0) {
-        ball.velocityY = -ball.velocityY;
-    } else if (ball.y + ball.width > boardHeight) {
-        newBall();
+    if (ball.x <= 0 || ball.x + ball.width >= boardWidth) {
+        ball.velocityX *= -1;
+    } else if (ball.y <= 0) {
+        ball.velocityY *= -1;
+
+    } else if (ball.y + ball.height >= boardHeight) {
+        ball.x = boardWidth / 2;
+        ball.y = boardHeight / 2;
+        ball.velocityX = ballVelocityX;
+        ball.velocityY = ballVelocityY;
         heart--;
         updateHeart();
-        if (heart < 0) {
-            alert("GAME OVER!");
-            heart = 3;
-            score = 0;
-            updateHeart();
-            updateScore();
-            createBlocks();
+        if (heart == 0) {
+            context.font = "20px sans-serif";
+            context.fillText("Game Over: Press 'Space' to play again", boardWidth / 2 - 150, boardHeight / 2 + 100);
+            gameOver = true;
 
         }
-
-
     }
+
 
     // bong cham vao thanh dieu khien dao huong
-    // ball.x + ball.width > player.x: bong cham vao thanh dieu khien tu ben trai
-    // ball.x - ball.width < player.x + player.width: bong cham vao thanh dieu khien tu ben phai
-    // ball.y + ball.width > player.y: bong cham vao thanh dieu khien tu phia tren
     if (
-        ball.x + ball.width > player.x &&
-        ball.x - ball.width < player.x + player.width &&
-        ball.y + ball.width > player.y
+        ball.x + ball.width > player.x && // bong cham vao thanh dieu khien tu ben trai
+        ball.x - ball.width < player.x + player.width && // bong cham vao thanh dieu khien tu ben phai
+        ball.y + ball.width > player.y // bong cham vao thanh dieu khien tu phia tren
     ) {
-        ball.velocityY = -ball.velocityY; // bong di len
+        ball.velocityY *= -1; // bong di len
     }
 
 }
-
-function newBall() {
-    ball.x = boardWidth / 2;
-    ball.y = boardHeight / 2;
-    ball.velocityX = 2;
-    ball.velocityY = 1.5;
-}
-
-function createBlocks() {
-    for (let i = 0; i < blockRows; i++) {
-        for (let j = 0; j < blockColumns; j++) {
-            blockArray[blockCount] = {
-                x: blockX + j * (blockWidth + 20),
-                y: blockY + i * (blockHeight + 20),
-                width: blockWidth,
-                height: blockHeight,
-                break: false
-            }
-            blockCount++;
-        }
-    }
-}
-
-function resetGame() {
-    ball.x = boardWidth / 2;
-    ball.y = boardHeight / 2;
-    blockArray = [];
-    blockCount = 0;
-    requestAnimationFrame(update);
-
-    document.addEventListener("mousemove", movePlayer);
-    createBlocks();
-    score = 0;
-    updateScore();
-
-}
-
 
 // cap nhat diem so
 function updateScore() {
